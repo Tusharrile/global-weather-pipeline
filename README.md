@@ -117,10 +117,6 @@ The fact table stores weather measurements, while dimension tables provide descr
 - Wind speed analysis by time
 - Pressure trends across locations
 
----
-
-## ⚙️ Data Pipeline Flow
-
 
 
 ---
@@ -193,9 +189,6 @@ Alerts can be configured for pipeline failures.
 | Delta Lake | Storage format |
 | Unity Catalog | Data governance |
 | Git & GitHub | Version control |
-
----
-
 
 ---
 
