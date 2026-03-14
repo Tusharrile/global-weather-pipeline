@@ -26,7 +26,6 @@ The dataset includes weather observations such as:
 
 The data is streamed into the pipeline and stored in **AWS S3**.
 
-### S3 Raw Data Path Structure
 
 
 ---
@@ -197,7 +196,6 @@ Alerts can be configured for pipeline failures.
 
 ---
 
-## 📂 Project Structure
 
 ---
 
