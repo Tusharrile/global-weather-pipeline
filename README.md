@@ -36,7 +36,6 @@ This project follows the Medallion Architecture implemented in Databricks Unity 
 
 ### Bronze Layer (Raw Data)
 
-**Table**
 
 
 
@@ -56,8 +55,6 @@ This project follows the Medallion Architecture implemented in Databricks Unity 
 
 ### Silver Layer (Cleaned Data)
 
-**Table**
-
 
 
 **Purpose**
@@ -75,8 +72,6 @@ This project follows the Medallion Architecture implemented in Databricks Unity 
 ---
 
 ### Silver Layer (Cleaned Data)
-
-**Table**
 
 
 
@@ -98,8 +93,6 @@ This project follows the Medallion Architecture implemented in Databricks Unity 
 ---
 
 ### Gold Layer (Analytics Layer)
-
-**Tables**
 
 
 
