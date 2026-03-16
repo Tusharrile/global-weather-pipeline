@@ -1,0 +1,1452 @@
+{
+  "datasets": [
+    {
+      "name": "c075bfae",
+      "displayName": "Top 10 Hottest Countries",
+      "queryLines": [
+        "SELECT country, avg_temp_celsius, max_temp_celsius, min_temp_celsius\n",
+        "FROM global_weather_catalog.gold.insight_top_temperatures\n",
+        "ORDER BY avg_temp_celsius DESC\n",
+        "LIMIT 10"
+      ]
+    },
+    {
+      "name": "7e48409b",
+      "displayName": "Air Quality by Country",
+      "queryLines": [
+        "SELECT country, avg_pm2_5, avg_pm10, avg_co, avg_epa_index\n",
+        "FROM global_weather_catalog.gold.insight_air_quality\n",
+        "ORDER BY avg_pm2_5 DESC\n",
+        "LIMIT 15"
+      ]
+    },
+    {
+      "name": "38d5b3f7",
+      "displayName": "Top 10 Rainfall Countries",
+      "queryLines": [
+        "SELECT country, total_rainfall_mm, avg_rainfall_mm, max_rainfall_mm\n",
+        "FROM global_weather_catalog.gold.insight_rainfall\n",
+        "ORDER BY total_rainfall_mm DESC LIMIT 10"
+      ]
+    },
+    {
+      "name": "39fd052c",
+      "displayName": "Wind Speed by Country",
+      "queryLines": [
+        "SELECT country, avg_wind_kph, max_wind_kph\n",
+        "FROM global_weather_catalog.gold.insight_wind\n",
+        "ORDER BY avg_wind_kph DESC LIMIT 15"
+      ]
+    },
+    {
+      "name": "f8e2c8e2",
+      "displayName": "UV Risk Distribution",
+      "queryLines": [
+        "SELECT uv_risk_level, COUNT(*) as record_count\n",
+        "FROM global_weather_catalog.gold.insight_uv_risk\n",
+        "GROUP BY uv_risk_level"
+      ]
+    },
+    {
+      "name": "98b16c8e",
+      "displayName": "Weather Conditions",
+      "queryLines": [
+        "SELECT condition_text, total_readings, percentage, avg_temp, avg_humidity\n",
+        "FROM global_weather_catalog.gold.insight_conditions\n",
+        "ORDER BY total_readings DESC"
+      ]
+    },
+    {
+      "name": "e55c57ec",
+      "displayName": "Humidity by Country",
+      "queryLines": [
+        "SELECT country, avg_humidity, humidity_level\n",
+        "FROM global_weather_catalog.gold.insight_humidity\n",
+        "ORDER BY avg_humidity DESC LIMIT 8"
+      ]
+    },
+    {
+      "name": "5f955d3c",
+      "displayName": "Extreme Weather Events",
+      "queryLines": [
+        "SELECT country, extreme_events, extreme_pct, max_wind_kph\n",
+        "FROM global_weather_catalog.gold.insight_extreme_weather\n",
+        "ORDER BY extreme_events DESC LIMIT 15"
+      ]
+    },
+    {
+      "name": "d4249f47",
+      "displayName": "Visibility by Country",
+      "queryLines": [
+        "SELECT condition_text, visibility_category, avg_visibility_km, avg_cloud_cover, reading_count\n",
+        "FROM global_weather_catalog.gold.insight_visibility\n",
+        "ORDER BY avg_visibility_km DESC LIMIT 15"
+      ]
+    },
+    {
+      "name": "6a541da6",
+      "displayName": "Cloud vs Air Quality",
+      "queryLines": [
+        "SELECT cloud_category, avg_pm2_5, avg_pm10, avg_ozone\n",
+        "FROM global_weather_catalog.gold.insight_cloud_air_quality\n",
+        "ORDER BY avg_pm2_5 DESC"
+      ]
+    },
+    {
+      "name": "5eb9563d",
+      "displayName": "Day vs Night Temp",
+      "queryLines": [
+        "SELECT country, is_day, avg_temp, max_temp, min_temp\n",
+        "FROM global_weather_catalog.gold.insight_day_night_temp\n",
+        "ORDER BY country, is_day LIMIT 30"
+      ]
+    },
+    {
+      "name": "90f60ded",
+      "displayName": "Pressure by Country",
+      "queryLines": [
+        "SELECT country, avg_pressure_mb, max_pressure_mb, min_pressure_mb\n",
+        "FROM global_weather_catalog.gold.insight_pressure\n",
+        "ORDER BY avg_pressure_mb DESC LIMIT 15"
+      ]
+    },
+    {
+      "name": "068cc69c",
+      "displayName": "Best Weather Destinations",
+      "queryLines": [
+        "SELECT country, weather_score, avg_temp, avg_uv, avg_wind\n",
+        "FROM global_weather_catalog.gold.insight_best_weather\n",
+        "ORDER BY weather_score DESC LIMIT 20"
+      ]
+    },
+    {
+      "name": "275bda53",
+      "displayName": "Summary Stats",
+      "queryLines": [
+        "SELECT \n",
+        "  (SELECT COUNT(DISTINCT country) FROM global_weather_catalog.gold.insight_top_temperatures) as total_countries,\n",
+        "  (SELECT ROUND(AVG(avg_temp_celsius), 1) FROM global_weather_catalog.gold.insight_top_temperatures) as global_avg_temp,\n",
+        "  (SELECT MAX(avg_wind_kph) FROM global_weather_catalog.gold.insight_wind) as max_wind_recorded,\n",
+        "  (SELECT ROUND(AVG(avg_pm2_5), 1) FROM global_weather_catalog.gold.insight_air_quality) as global_avg_pm25"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "a0847f36",
+      "displayName": "Global Weather Pipeline Dashboard",
+      "layout": [
+        {
+          "widget": {
+            "name": "top-10-hottest-countries-by-avg-temperature",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "c075bfae",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(avg_temp_celsius)",
+                      "expression": "SUM(`avg_temp_celsius`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "🌡️ Top 10 Hottest Countries by Avg Temperature"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_temp_celsius)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "pm25-air-quality-index-by-country",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "7e48409b",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(avg_pm2_5)",
+                      "expression": "SUM(`avg_pm2_5`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "🌫️ PM2.5 Air Quality Index by Country"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_pm2_5)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "highest-rainfall-countries",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "38d5b3f7",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(avg_rainfall_mm)",
+                      "expression": "SUM(`avg_rainfall_mm`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "🌧️ Top 10 Highest Rainfall Countries"
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_rainfall_mm)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 11,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "average-wind-speed-by-country",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "39fd052c",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(max_wind_kph)",
+                      "expression": "SUM(`max_wind_kph`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "💨 Average Wind Speed by Country"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(max_wind_kph)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 17,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "global-uv-risk-level-distribution",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f8e2c8e2",
+                  "fields": [
+                    {
+                      "name": "sum(record_count)",
+                      "expression": "SUM(`record_count`)"
+                    },
+                    {
+                      "name": "uv_risk_level",
+                      "expression": "`uv_risk_level`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "☀️ Global UV Risk Level Distribution"
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(record_count)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "uv_risk_level",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 23,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "most-common-weather-conditions-worldwide",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "98b16c8e",
+                  "fields": [
+                    {
+                      "name": "sum(total_readings)",
+                      "expression": "SUM(`total_readings`)"
+                    },
+                    {
+                      "name": "condition_text",
+                      "expression": "`condition_text`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "⛅ Most Common Weather Conditions Worldwide"
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(total_readings)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "condition_text",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 29,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "average-humidity-levels-by-country",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e55c57ec",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(avg_humidity)",
+                      "expression": "SUM(`avg_humidity`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "💧 Average Humidity Levels by Country"
+              },
+              "mark": {
+                "colors": [
+                  "#58BEDE",
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_humidity)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 35,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "countries-extreme-weather-events",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "5f955d3c",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(extreme_events)",
+                      "expression": "SUM(`extreme_events`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "⚡ Countries with Most Extreme Weather Events"
+              },
+              "mark": {
+                "colors": [
+                  "#F28A16",
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(extreme_events)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 41,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "visibility-by-weather-condition",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "d4249f47",
+                  "fields": [
+                    {
+                      "name": "condition_text",
+                      "expression": "`condition_text`"
+                    },
+                    {
+                      "name": "sum(avg_visibility_km)",
+                      "expression": "SUM(`avg_visibility_km`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "👁️ Visibility by Weather Condition"
+              },
+              "mark": {
+                "colors": [
+                  "#7A11D2",
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "condition_text",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_visibility_km)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 47,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "cloud-cover-impact-air-quality",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "6a541da6",
+                  "fields": [
+                    {
+                      "name": "cloud_category",
+                      "expression": "`cloud_category`"
+                    },
+                    {
+                      "name": "sum(avg_pm2_5)",
+                      "expression": "SUM(`avg_pm2_5`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "☁️ Cloud Cover Impact on Air Quality"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "cloud_category",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_pm2_5)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 53,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "day-vs-night-temperature-by-country",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "5eb9563d",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(avg_temp)",
+                      "expression": "SUM(`avg_temp`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "🌅 Day vs Night Temperature by Country"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_temp)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 59,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "atmospheric-pressure-by-country",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "90f60ded",
+                  "fields": [
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(avg_pressure_mb)",
+                      "expression": "SUM(`avg_pressure_mb`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "📊 Atmospheric Pressure by Country"
+              },
+              "mark": {
+                "colors": [
+                  "#2F464F",
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_pressure_mb)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 65,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "best-weather-destinations",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "068cc69c",
+                  "fields": [
+                    {
+                      "name": "sum(avg_temp)",
+                      "expression": "SUM(`avg_temp`)"
+                    },
+                    {
+                      "name": "country",
+                      "expression": "`country`"
+                    },
+                    {
+                      "name": "sum(weather_score)",
+                      "expression": "SUM(`weather_score`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "🏆 Top 20 Best Weather Destinations\n"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(weather_score)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": false
+                },
+                "extra": [
+                  {
+                    "fieldName": "sum(avg_temp)"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 71,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "total-countries",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "275bda53",
+                  "fields": [
+                    {
+                      "name": "sum(total_countries)",
+                      "expression": "SUM(`total_countries`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "🌍 Total Countries"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(total_countries)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 77,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "global-avg-temp-c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "275bda53",
+                  "fields": [
+                    {
+                      "name": "sum(global_avg_temp)",
+                      "expression": "SUM(`global_avg_temp`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "🌡️ Global Avg Temp (°C)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(global_avg_temp)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 83,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "max-wind-speed-kph",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "275bda53",
+                  "fields": [
+                    {
+                      "name": "sum(max_wind_recorded)",
+                      "expression": "SUM(`max_wind_recorded`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "💨 Max Wind Speed (kph)"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(max_wind_recorded)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 89,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "global-avg-pm25",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "275bda53",
+                  "fields": [
+                    {
+                      "name": "sum(global_avg_pm25)",
+                      "expression": "SUM(`global_avg_pm25`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "🌫️ Global Avg PM2.5"
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(global_avg_pm25)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 95,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
