@@ -602,11 +602,11 @@ Below are visual insights generated from the **Gold Layer analytics tables**.
 
 ### 🌡 Global Temperature Insights
 
-![Global Avg Temp](images/🌡️ Global Avg Temp (°C).png)
+![Global Avg Temp](images/Global Avg Temp (°C).png)
 
-![Top 10 Hottest Countries](images/🌡️ Top 10 Hottest Countries by Avg Temperature.png)
+![Top 10 Hottest Countries](images/Top 10 Hottest Countries by Avg Temperature.png)
 
-![Day vs Night Temperature](images/🌅 Day vs Night Temperature by Country.png)
+![Day vs Night Temperature](images/Day vs Night Temperature by Country.png)
 
 ---
 
