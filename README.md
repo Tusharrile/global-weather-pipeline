@@ -10,18 +10,15 @@ An end-to-end, production-grade data engineering pipeline demonstrating streamin
 
 ---
 
-## Team
+## Project Objective
 
-| Name | Role |
-|------|------|
-| **Adeesh Koshal** | Team Lead — Full-Stack Pipeline Architect |
-| **Tushar Rile** | AWS Infrastructure & Streaming Specialist |
-| **Revanth Sai** | Databricks & Data Transformation Engineer |
+The core objective of this project is to construct a highly resilient, scalable, and automated cloud data pipeline that reliably ingests and processes global weather data in real-time. By leveraging a modern data stack—including AWS serverless streaming (Lambda, Kinesis), Databricks for distributed data transformation (Silver and Gold layers), and Apache Airflow for robust orchestration—the pipeline aims to deliver clean, analytics-ready dimensional models. Ultimately, these models fuel actionable business insights and intuitive dashboards, demonstrating enterprise-grade data engineering practices such as the Medallion Architecture and star schema design.
 
 ---
 
 ## Table of Contents
 
+- [Project Objective](#project-objective)
 - [Project Overview](#project-overview)
 - [Architecture Diagram](#architecture-diagram)
 - [Tech Stack](#tech-stack)
