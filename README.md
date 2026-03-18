@@ -602,64 +602,64 @@ Below are visual insights generated from the **Gold Layer analytics tables**.
 
 ### 🌡 Global Temperature Insights
 
-![Global Avg Temp](Dashboard/images/Global Avg Temp (°C).png)
+![Global Avg Temp](Dashboard/images/Global%20Avg%20Temp%20(°C).png)
 
-![Top 10 Hottest Countries](Dashboard/images/Top 10 Hottest Countries by Avg Temperature.png)
+![Top 10 Hottest Countries](Dashboard/images/Top%2010%20Hottest%20Countries%20by%20Avg%20Temperature.png)
 
-![Day vs Night Temperature](Dashboard/images/Day vs Night Temperature by Country.png)
+![Day vs Night Temperature](Dashboard/images/Day%20vs%20Night%20Temperature%20by%20Country.png)
 
 ---
 
 ### 🌧 Rainfall Insights
 
-![Top 10 Highest Rainfall Countries](Dashboard/images/Top 10 Highest Rainfall Countries.png)
+![Top 10 Highest Rainfall Countries](Dashboard/images/Top%2010%20Highest%20Rainfall%20Countries.png)
 
 ---
 
 ### 🌫 Air Quality Insights
 
-![Global Avg PM2.5](Dashboard/images/Global Avg PM2.5.png)
+![Global Avg PM2.5](Dashboard/images/Global%20Avg%20PM2.5.png)
 
-![PM2.5 Air Quality Index](Dashboard/images/PM2.5 Air Quality Index by Country.png)
+![PM2.5 Air Quality Index](Dashboard/images/PM2.5%20Air%20Quality%20Index%20by%20Country.png)
 
-![Cloud Cover Impact on Air Quality](Dashboard/images/Cloud Cover Impact on Air Quality.png)
+![Cloud Cover Impact on Air Quality](Dashboard/images/Cloud%20Cover%20Impact%20on%20Air%20Quality.png)
 
 ---
 
 ### ☀ Environmental Indicators
 
-![Global UV Risk Level Distribution](Dashboard/images/Global UV Risk Level Distribution.png)
+![Global UV Risk Level Distribution](Dashboard/images/Global%20UV%20Risk%20Level%20Distribution.png)
 
-![Atmospheric Pressure by Country](Dashboard/images/Atmospheric Pressure by Country.png)
+![Atmospheric Pressure by Country](Dashboard/images/Atmospheric%20Pressure%20by%20Country.png)
 
 ---
 
 ### 💨 Wind Insights
 
-![Average Wind Speed by Country](Dashboard/images/Average Wind Speed by Country.png)
+![Average Wind Speed by Country](Dashboard/images/Average%20Wind%20Speed%20by%20Country.png)
 
-![Max Wind Speed](Dashboard/images/Max Wind Speed (kph).png)
+![Max Wind Speed](Dashboard/images/Max%20Wind%20Speed%20(kph).png)
 
 ---
 
 ### 💧 Humidity Insights
 
-![Average Humidity Levels by Country](Dashboard/images/Average Humidity Levels by Country.png)
+![Average Humidity Levels by Country](Dashboard/images/Average%20Humidity%20Levels%20by%20Country.png)
 
 ---
 
 ### 👁 Visibility Analysis
 
-![Visibility by Weather Condition](Dashboard/images/Visibility by Weather Condition.png)
+![Visibility by Weather Condition](Dashboard/images/Visibility%20by%20Weather%20Condition.png)
 
 ---
 
 ### ⚡ Extreme Weather Events
 
-![Countries with Most Extreme Weather Events](Dashboard/images/Countries with Most Extreme Weather Events.png)
+![Countries with Most Extreme Weather Events](Dashboard/images/Countries%20with%20Most%20Extreme%20Weather%20Events.png)
 
 ---
 
 ### 🌍 Global Coverage
 
-![Total Countries](Dashboard/images/Total Countries.png)
+![Total Countries](Dashboard/images/Total%20Countries.png)
