@@ -304,3 +304,12 @@ Below are selected summary visual insights rendered strictly using finalized Gol
 
 ### Wind Insights
 ![Average Wind Speed by Country](Dashboard/images/Average%20Wind%20Speed%20by%20Country.png)
+
+### UV Risk Analysis
+![Global UV Risk Level](Dashboard/images/Global%20UV%20Risk%20Level%20Distribution.png)
+
+### Regional Air Quality Index
+![PM2.5 Air Quality Index](Dashboard/images/PM2.5%20Air%20Quality%20Index%20by%20Country.png)
+
+### Visibility Distribution
+![Visibility by Weather Condition](Dashboard/images/Visibility%20by%20Weather%20Condition.png)
