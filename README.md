@@ -12,7 +12,16 @@ An end-to-end, production-grade data engineering pipeline demonstrating streamin
 
 ## Project Objective
 
-The core objective of this project is to construct a highly resilient, scalable, and automated cloud data pipeline that reliably ingests and processes global weather data in real-time. By leveraging a modern data stack—including AWS serverless streaming (Lambda, Kinesis), Databricks for distributed data transformation (Silver and Gold layers), and Apache Airflow for robust orchestration—the pipeline aims to deliver clean, analytics-ready dimensional models. Ultimately, these models fuel actionable business insights and intuitive dashboards, demonstrating enterprise-grade data engineering practices such as the Medallion Architecture and star schema design.
+Stream weather sensor data via Amazon Kinesis, process for real-time insights, and store in Delta Lake tables for forecasting and analysis. Includes error handling, data quality checks, Git integration, and Unity Catalog usage.
+
+- **Source:** JSON payload data simulating Kaggle's "Weather Dataset for Time Series Analysis" streamed via Amazon Kinesis (includes temperature, humidity, wind speed, etc.).
+- **Destinations:**
+    - **Bronze:** `weather_catalog.raw.weather_readings` (raw event ingestion)
+    - **Silver:** `weather_catalog.processed.valid_readings` (filtered and processed data)
+    - **Gold:** `weather_catalog.analytics.weather_stats` (business-ready metrics like daily averages and extreme weather flags)
+- **Transformations:** Parse JSON, filter invalid records, compute rolling metrics (e.g., hourly averages), detect extreme weather events, and tag statuses.
+- **Schedule:** Continuous streaming with 10-second micro-batches.
+- **Alerting & Logging:** Slack notifications triggered for extreme weather events, and structured error logs written to `weather_catalog.logs.anomaly_log`.
 
 ---
 
