@@ -12,16 +12,7 @@ An end-to-end, production-grade data engineering pipeline demonstrating streamin
 
 ## Project Objective
 
-Stream weather sensor data via Amazon Kinesis, process for real-time insights, and store in Delta Lake tables for forecasting and analysis. Includes error handling, data quality checks, Git integration, and Unity Catalog usage.
-
-- **Source:** JSON payload data simulating Kaggle's "Weather Dataset for Time Series Analysis" streamed via Amazon Kinesis (includes temperature, humidity, wind speed, etc.).
-- **Destinations:**
-    - **Bronze:** `weather_catalog.raw.weather_readings` (raw event ingestion)
-    - **Silver:** `weather_catalog.processed.valid_readings` (filtered and processed data)
-    - **Gold:** `weather_catalog.analytics.weather_stats` (business-ready metrics like daily averages and extreme weather flags)
-- **Transformations:** Parse JSON, filter invalid records, compute rolling metrics (e.g., hourly averages), detect extreme weather events, and tag statuses.
-- **Schedule:** Continuous streaming with 10-second micro-batches.
-- **Alerting & Logging:** Slack notifications triggered for extreme weather events, and structured error logs written to `weather_catalog.logs.anomaly_log`.
+To build an end-to-end real-time weather data pipeline that automatically ingests raw CSV data, processes it through a Medallion Architecture (Bronze → Silver → Gold), and delivers clean, analytics-ready Star Schema tables using AWS and Databricks — with full orchestration, monitoring, and zero manual intervention.
 
 ---
 
