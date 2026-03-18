@@ -67,27 +67,7 @@ Key architectural point: The Glue Crawler updates the schema metadata catalog on
 
 ## Architecture Diagram
 
-```
-[ CSV Source ]--->[ S3 raw/ ]--->[ AWS Lambda ]--->[ Kinesis Data Stream ]--->[ Kinesis Firehose ]
- 127k rows         Event          Python 3.12       On-Demand                  JSON -> Parquet
-                                                                                      |
-                                                                                      v
-                          [ S3 bronze/ (Parquet, partitioned by Country) ]      [ Glue Crawler ]
-                                                  | (reads directly)
-                                                  v
-                          [ Databricks Silver (PySpark Serverless) ]
-                           - Column rename & schema enforcement
-                           - Type casting, null imputation, deduplication
-                           - Outlier removal
-                                                  |
-                                                  v
-                          [ Databricks Gold (Star Schema) ]
-                           - fact_weather + dimensions
-                                                  |
-                                                  v
-                          [ Apache Airflow MWAA (11-task DAG) ]
-                           - Slack Webhook Alerts on every task
-```
+![Architecture Diagram](Dashboard/images/architecture.png)
 
 ---
 
