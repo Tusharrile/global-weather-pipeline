@@ -7,7 +7,6 @@ An end-to-end, production-grade data engineering pipeline demonstrating streamin
 [![Databricks](https://img.shields.io/badge/Databricks-Serverless-red?logo=databricks)](https://databricks.com)
 [![AWS](https://img.shields.io/badge/AWS-ap--south--1-FF9900?logo=amazonaws)](https://aws.amazon.com)
 [![Airflow](https://img.shields.io/badge/Airflow-MWAA-017CEE?logo=apacheairflow)](https://airflow.apache.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
