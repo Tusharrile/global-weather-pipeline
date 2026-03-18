@@ -602,64 +602,64 @@ Below are visual insights generated from the **Gold Layer analytics tables**.
 
 ### 🌡 Global Temperature Insights
 
-![Global Avg Temp](images/Global Avg Temp (°C).png)
+![Global Avg Temp](Dashboard/images/Global Avg Temp (°C).png)
 
-![Top 10 Hottest Countries](images/Top 10 Hottest Countries by Avg Temperature.png)
+![Top 10 Hottest Countries](Dashboard/images/Top 10 Hottest Countries by Avg Temperature.png)
 
-![Day vs Night Temperature](images/Day vs Night Temperature by Country.png)
+![Day vs Night Temperature](Dashboard/images/Day vs Night Temperature by Country.png)
 
 ---
 
 ### 🌧 Rainfall Insights
 
-![Top 10 Highest Rainfall Countries](images/🌧️ Top 10 Highest Rainfall Countries.png)
+![Top 10 Highest Rainfall Countries](Dashboard/images/Top 10 Highest Rainfall Countries.png)
 
 ---
 
 ### 🌫 Air Quality Insights
 
-![Global Avg PM2.5](images/🌫️ Global Avg PM2.5.png)
+![Global Avg PM2.5](Dashboard/images/Global Avg PM2.5.png)
 
-![PM2.5 Air Quality Index](images/🌫️ PM2.5 Air Quality Index by Country.png)
+![PM2.5 Air Quality Index](Dashboard/images/PM2.5 Air Quality Index by Country.png)
 
-![Cloud Cover Impact on Air Quality](images/☁️ Cloud Cover Impact on Air Quality.png)
+![Cloud Cover Impact on Air Quality](Dashboard/images/Cloud Cover Impact on Air Quality.png)
 
 ---
 
 ### ☀ Environmental Indicators
 
-![Global UV Risk Level Distribution](images/☀️ Global UV Risk Level Distribution.png)
+![Global UV Risk Level Distribution](Dashboard/images/Global UV Risk Level Distribution.png)
 
-![Atmospheric Pressure by Country](images/📊 Atmospheric Pressure by Country.png)
+![Atmospheric Pressure by Country](Dashboard/images/Atmospheric Pressure by Country.png)
 
 ---
 
 ### 💨 Wind Insights
 
-![Average Wind Speed by Country](images/💨 Average Wind Speed by Country.png)
+![Average Wind Speed by Country](Dashboard/images/Average Wind Speed by Country.png)
 
-![Max Wind Speed](images/💨 Max Wind Speed (kph).png)
+![Max Wind Speed](Dashboard/images/Max Wind Speed (kph).png)
 
 ---
 
 ### 💧 Humidity Insights
 
-![Average Humidity Levels by Country](images/💧 Average Humidity Levels by Country.png)
+![Average Humidity Levels by Country](Dashboard/images/Average Humidity Levels by Country.png)
 
 ---
 
 ### 👁 Visibility Analysis
 
-![Visibility by Weather Condition](images/👁️ Visibility by Weather Condition.png)
+![Visibility by Weather Condition](Dashboard/images/Visibility by Weather Condition.png)
 
 ---
 
 ### ⚡ Extreme Weather Events
 
-![Countries with Most Extreme Weather Events](images/⚡ Countries with Most Extreme Weather Events.png)
+![Countries with Most Extreme Weather Events](Dashboard/images/Countries with Most Extreme Weather Events.png)
 
 ---
 
 ### 🌍 Global Coverage
 
-![Total Countries](images/🌍 Total Countries.png)
+![Total Countries](Dashboard/images/Total Countries.png)
